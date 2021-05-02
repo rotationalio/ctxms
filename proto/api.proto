@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package ctxms.api;
+option go_package = "github.com/rotationalio/ctxms/proto;api";
+
+
+service Hopper {
+    rpc Trace(Packet) returns (Packet) {};
+}
+
+message Packet {
+    string id = 1;             // unique uuid for the packet
+    string timestamp = 2;      // timestamp that the packet was sent out
+    repeated string route = 3; // names of all the servers the packet has been to
+}
